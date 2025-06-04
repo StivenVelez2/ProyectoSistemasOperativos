@@ -1,0 +1,31 @@
+
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db1
+      - db2
+
+  db1:
+    image: postgres
+    environment:
+      POSTGRES_DB: usuarios_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1114620024
+    ports:
+      - "5433:5432"
+
+  db2:
+    image: postgres
+    environment:
+      POSTGRES_DB: dashboard_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1114620024
+    ports:
+      - "5434:5432"

@@ -1,0 +1,9 @@
+<h1>¿Eliminar Reporte?</h1>
+
+<p>¿Estás seguro de que deseas eliminar <strong>{{ reporte.titulo }}</strong>?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">✅ Sí, eliminar</button>
+  <a href="{% url 'dashboard:reporte_list' %}">❌ Cancelar</a>  <!-- ✅ Agregado namespace -->
+</form>

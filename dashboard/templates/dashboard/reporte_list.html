@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Reportes - {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Mis Reportes</h2>
+        <a href="{% url 'dashboard:reporte_create' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nuevo Reporte
+        </a>
+    </div>
+    
+    {% if reportes %}  <!-- ✅ Cambiado de object_list a reportes -->
+        <div class="row">
+            {% for reporte in reportes %}  <!-- ✅ Cambiado de object_list a reportes -->
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ reporte.titulo }}</h5>
+                            <p class="card-text">{{ reporte.descripcion|truncatewords:10 }}</p>
+                            <small class="text-muted">{{ reporte.fecha_creacion|date:"d/m/Y" }}</small>
+                        </div>
+                        <div class="card-footer">
+                            <div class="btn-group w-100">
+                                <!-- ❌ Eliminar esta línea - no tienes esta URL -->
+                                <!-- <a href="{% url 'dashboard:reporte_detail' reporte.pk %}" class="btn btn-outline-primary btn-sm">Ver</a> -->
+                                <a href="{% url 'dashboard:reporte_update' reporte.pk %}" class="btn btn-outline-secondary btn-sm">Editar</a>
+                                <a href="{% url 'dashboard:reporte_delete' reporte.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <h4 class="text-muted">No tienes reportes aún</h4>
+            <p>Crea tu primer reporte para comenzar</p>
+            <a href="{% url 'dashboard:reporte_create' %}" class="btn btn-primary">Crear Reporte</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
