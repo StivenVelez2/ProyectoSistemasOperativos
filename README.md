@@ -19,7 +19,7 @@ ProyectoSistemasOp/
  Dockerfile
  docker-compose.yml
 4. Instalacion Local (Sin Docker)
-1. git clone <repo-url>
+1. git clone https://github.com/StivenVelez2/ProyectoSistemasOperativos/tree/master
 2. cd ProyectoSistemasOp
 3. pip install -r requirements.txt
 4. Configurar base de datos en settings.py
