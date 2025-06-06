@@ -14,6 +14,7 @@ services:
 
   db1:
     image: postgres
+    container_name: proyectosistemasop-db1-1
     environment:
       POSTGRES_DB: usuarios_db
       POSTGRES_USER: user
@@ -23,9 +24,16 @@ services:
 
   db2:
     image: postgres
+    container_name: proyectosistemasop-db2-1
     environment:
       POSTGRES_DB: dashboard_db
       POSTGRES_USER: user
       POSTGRES_PASSWORD: 1114620024
     ports:
       - "5434:5432"
+
+##docker ps
+##docker -it exec (id o nombre) bash
+##psql -U user (nombre db)
+##\l
+##docker compose exec web python manage.py migrate --database=dashboard
